@@ -1,0 +1,30 @@
+{% extends "base1.html" %}
+{% load static %}
+{% block title %}Password Reset{% endblock title %}
+{% block main-content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <h3>Reset Password</h3>
+            <hr>
+            <form action="" method="post">
+                {% csrf_token %}
+                {% for fm in form %}
+                <div class="form-group">
+                     {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors|striptags}}</small><br>
+                </div>
+                {% endfor %}
+
+                <input type="submit" class="btn btn-primary" value="submit">
+                {% if form.non_field_errors %}
+                    {% for error in form.non_field_errors %}
+                         <p>{{error}}</p>
+                    {% endfor %}
+                {% endif %}
+            </form>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+{% endblock main-content %}

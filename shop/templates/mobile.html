@@ -1,0 +1,29 @@
+{% extends "base1.html" %}
+{% load static %}
+{% block main-content %}
+<div class="container">
+    <div class="row">
+        <h2 class="text-center">Mobile</h2>
+        <div class="col-sm-2"style="background-color:;">
+            <div class="list-group">
+                    <a href="{% url 'mobile' %}"class="list-group-item ">All Mobiles</a>
+                <a href="{% url 'mobiledata' 'Realme' %}" class="list-group-item list-group-item-action">Realme</a>
+                <a href="{% url 'mobiledata' 'Oneplus' %}" class="list-group-item list-group-item-action">OnePlus</a>
+                 <a href="{% url 'mobiledata' 'Below' %}" class="list-group-item list-group-item-action">Below Rs. 10000/-</a>
+                 <a href="{% url 'mobiledata' 'Above' %}" class="list-group-item list-group-item-action">Above Rs. 10000/-</a>
+            </div>
+        </div>
+
+          <div class="col-sm-4" style="background-color:;min-height:;">
+            {% for m in mobiles %}
+              <div class="row">
+                <div class="">
+                    <a href="{% url 'product_detail' m.id %}">
+                        <img src="{{m.product_image.url}}" style="height:200px;width:300px;"></a>
+                    <span style="margin-left:100px;">{{ m.title }}</span><span>{{ m.discounted_prices }}</span>
+                </div>
+              </div> {% endfor %}
+          </div>
+    </div>
+</div>
+{% endblock main-content %}

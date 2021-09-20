@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+     <link href="{% static "css/all.css" %}" rel="stylesheet" media="all" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<link href="{% static "css/styles.css" %}" rel="stylesheet" media="all" />
+    <link href="{% static "css/flickity.css" %}" rel="stylesheet" media="all" />
+    <script src="{% static "js/all.js" %}"></script>
+
+
+  <script src="{% static "js/popper.js" %}"></script>
+    <meta charset="UTF-8">
+    <title>Shubh | {% block title %} {% endblock title %}</title>
+
+    <style>
+       a{
+
+        color:black;font-size:15px;
+        text-decoration:none;
+        margin:10px;text-transform:;
+        list style:none;
+        }
+        #col-md-4 ul li a{
+        list-style:none;
+        }
+    </style>
+</head>
+<body style="background: linear-gradient(to top, #ccffff 0%, #ffcccc 50%);">
+<div class="container-fluid" style="background-color:#267bd9;">
+  <div class="row" style="margin-top:20px;">
+     <div class="col-md-4 " style="min-height:50px;background-color:;">
+      <a href="/" style="font-size:20px;text-decoration:none;">Home</a>
+         <a href="" style="font-size:20px;text-decoration:none;">Fashion</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="text-decoration:none;">
+          Electronics
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'mobile' %}">Mobile</a><br>
+          <a class="dropdown-item" href="#">Laptop</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#"></a>
+        </div>
+      </li>
+
+
+   </div>
+     <div class="col-md-4">
+            <form action="/search/" method=POST class="form-inline my-2 my-lg-0">
+                {% csrf_token %}
+                 <input class="form-control mr-sm-2" name="search" id="search" type="search" placeholder="Search" aria-label="Search">
+                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+            </form>
+     </div>
+        <div class="col-md-4" style="background-color:;">
+           {% if request.user.is_authenticated %}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"style="text-decoration:none;">
+                    {{request.user.username|capfirst}}
+                </a>
+                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                     <a class="dropdown-item" style="text-decoration:none;" href="/profile">Profile</a><br>
+                     <a class="dropdown-item" style="text-decoration:none;" href="/order">Order</a><br>
+                        <a class="dropdown-item" style="text-decoration:none;" href="/changepass">Ch-Pass</a>
+                     <a class="dropdown-item" style="text-decoration:none;" href="/logout">Logout</a>
+
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#"></a>
+                 </div>
+              </li>
+             <a href="/show_cart" class="nav-link text-white"style="text-decoration:none;">
+                 <span class="badge bg-danger">{{totalitem}}</span><i class="fa fa-shopping-cart"style="font-size:20px;color:;"></i>  </a>
+
+                    {% else %}
+             <a href="/login" class=" text-white"><div class="btn btn-primary">Signin</div></a>
+
+                <a href="{% url 'register' %}" class="text-white"><div class="btn btn-primary">Signup</div></a>
+{% endif %}
+        </div>
+  </div>
+</div>
+
+<script src="{% static "js/myscript.js" %}"></script>
+
+{% block content %} {% endblock content %}
+{% block slider %} {% endblock slider %}
+
+
+{% block livesale %} {% endblock livesale %}
+
+
+{% block main-content %} {% endblock main-content %}
+{% block payment_gateway %}{% endblock payment_gateway %}
+
+<div class="container-fluid" style="background-color:#6cb6ff;">
+    <div class="row">
+        <div class="col-md-4">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="text-center">
+            <h4 >Follow Us</h4><br>
+            <div style="font-size:px;background-color:;">
+            <a href="" style="font-size:40px;color:#bf82e3"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=100063704145410" style="font-size:40px;color:#0053a6"><i class="fab fa-facebook 5x"></i> </a>
+            <a href="" style="font-size:40px;color:#0053a6"><i class="fab fa-twitter 4x"></i> </a>
+            <a href="" style="font-size:40px;"><i class="fas fa-facebook"></i> </a>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <hr>
+            <p style="">Copyright @2021 Designed By <a href=""style="text-decoration:none">Er. Nandini Sharma</a></p>
+        </div>
+    </div>
+</div>
+ <script src="{% static "js/flickity.js" %}"></script>
+<script src="{% static "js/jscript.js" %}"></script>
+
+</body>
+</html>

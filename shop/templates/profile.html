@@ -1,0 +1,52 @@
+{% extends 'base1.html' %}
+{% load static %}
+{% block title %}Your Profile{% endblock title %}
+{% block main-content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Welcome <span class="text-capitalize">{{request.user}}</span></h2>
+            <ul class="list-unstyled">
+               <li class="d-grid"> <div class="btn {{pro}}" style="width:140px;background-color:#ff95ca" >Profile</div></li>
+            <li class="d-grid"><a href="/address" style="text-decoration:none;width:140px;">Address</a></li>
+            </ul>
+        </div>
+        <div class="col-md-8" style="min-height:400px;">
+             <!--  <form action="" method="post">
+                {% csrf_token %}
+               Name<input type="text" name="username" class="form-control">
+               Address 1<input type="text" class="form-control">
+                 Locality<input type="text" name="address"class="form-control">
+                City<input type="text" class="form-control">
+                Choose State
+                <select class="form-control">
+                    <option>--Choose--</option>
+                    <option></option>
+                </select>
+                <div>
+                    <button type="submit" class="btn btn-primary form-control">submit</button>
+                </div>
+            </form>--->
+            {% if messages %}
+   		 				{% for message in messages %}
+						<div class="alert alert-info">
+							{{ message }}
+						</div>
+		   				{% endfor %}
+			{% endif %}
+          <form action="" method="post">
+                {% csrf_token %}
+                {% for fm in form %}
+                <div class="form-group">
+                    {{fm.label_tag}} {{fm}}
+                </div>
+                {% endfor %}
+              <input type="submit" class="btn " style="" >
+            </form>
+
+
+        </div>
+
+    </div>
+</div>
+{% endblock main-content %}

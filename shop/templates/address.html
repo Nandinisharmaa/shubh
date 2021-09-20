@@ -1,0 +1,34 @@
+{% extends 'base1.html' %}
+{% load static %}
+{% block title %}Buy Now{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+ <div class="row">
+ <h3>Welcome {{request.user|capfirst}}</h3>
+  <div class="col-sm-2 border-end">
+   <ul class="list-unstyled">
+    <li class="d-grid"><a href="/profile" class="btn "style="width:140px">Profile</a></li>
+    <li class="d-grid"><a href="" class="btn {{add}}"style="background-color:#ff95ca;width:140px">Address</a></li>
+   </ul>
+  </div>
+  <div class="col-sm-9 offset-sm-1">
+   <div class="row">
+    {% for ad in add  %}
+    <div class="col-sm-6"style="min-height:300px; background-color:white;">
+     <div class="card">
+      <div class="card-body">
+       <h3>Address {{forloop.counter}}</h3>
+       <p>Name: {{ad.name}}</p>
+       <p>Locality: {{ad.loacality}}</p>
+       <p>City : {{ad.city}}</p>
+       <p>Zipcode: {{ad.zipcode}}</p>
+       <p>State: {{ad.state}}</p>
+      </div>
+     </div>
+    </div>
+    {% endfor %}
+   </div>
+  </div>
+ </div>
+</div>
+{% endblock main-content %}

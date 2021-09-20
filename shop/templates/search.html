@@ -1,0 +1,17 @@
+{% extends "base1.html" %}
+{% block title %}Search{% endblock title %}
+{% block main-content %}
+<h4>Search result:</h4>
+<div class="container">
+    <div class="row">
+    {% if search %}
+        <h2>you searched for {{ search }}</h2>
+        {% for item in items %}
+        {{title.product_image}}
+        {% endfor %}
+      {% else %}
+        <h2>type the item</h2>
+    {% endif %}
+    </div>
+</div>
+{% endblock main-content %}
